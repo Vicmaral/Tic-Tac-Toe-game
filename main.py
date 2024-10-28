@@ -2,7 +2,7 @@ import numpy as np
 import random
 from sys import exit
 
-data_game = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+data_game = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]#inizialing with empties with better format to the board
 
 
 def print_board():
@@ -34,9 +34,9 @@ def is_winner():
         return True
 
 
-def board_values():
-    for x in np.setdiff1d(inputs, outputs):
-        if x == 'q' and (len(inputs) % 2 == 0):
+def board_values():  #changing the letters values for data_game positions
+    for x in np.setdiff1d(inputs, outputs):  #the diff between them is the new input value
+        if x == 'q' and (len(inputs) % 2 == 0): # len(inputs) % 2 == 0 check the turn of X or 0
             data_game[0][0] = ' X'
         elif x == 'q':
             data_game[0][0] = ' 0'
@@ -74,23 +74,27 @@ def board_values():
             data_game[2][2] = ' 0'
     outputs.append(np.setdiff1d(inputs, outputs))
 
-keys=('q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c')
+
+keys = ('q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c')
 ia_active = False
 inputs = []
 outputs = []
+
+
 print("Welcome to Tic Tac Toe game\n"
       "Use your board to play\n")
 instructions_board()
 if input("Versus machine? Y/N ").lower() == 'y':
     ia_active = True
 
-while len(inputs) < 9:
+while len(inputs) < 9: #bucle of the main game
     input_ok = True
+
     if ia_active and (len(inputs) % 2 == 0):
         inputs.append(random.choice(np.setdiff1d(keys, outputs)))
 
     else:
-        while input_ok:
+        while input_ok: #bucle for reciving the outputs
             print_board()
             temp_input = input("Choose your move:").lower()
             if (temp_input not in inputs) and (temp_input in keys):
@@ -98,7 +102,9 @@ while len(inputs) < 9:
                 input_ok = False
             else:
                 print("Input repeated or not valid")
+
     board_values()
+
     if is_winner():
         print("The winner is:")
         if len(inputs) % 2 == 0:

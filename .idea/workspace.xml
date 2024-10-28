@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41aa842-057b-4548-bc10-43e6c09a4cd0" name="Changes" comment="finished without IA">
+    <list default="true" id="c41aa842-057b-4548-bc10-43e6c09a4cd0" name="Changes" comment="finished with IA(not too smart)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -91,13 +91,22 @@
       <option name="project" value="LOCAL" />
       <updated>1730123732763</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="finished with IA(not too smart)">
+      <option name="closed" value="true" />
+      <created>1730125513622</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730125513622</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start" />
     <MESSAGE value="allmost finished, stop if victory or say equals" />
     <MESSAGE value="finished without IA" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished without IA" />
+    <MESSAGE value="finished with IA(not too smart)" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished with IA(not too smart)" />
   </component>
 </project>
