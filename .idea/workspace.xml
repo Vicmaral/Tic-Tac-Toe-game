@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41aa842-057b-4548-bc10-43e6c09a4cd0" name="Changes" comment="start">
+    <list default="true" id="c41aa842-057b-4548-bc10-43e6c09a4cd0" name="Changes" comment="allmost finished, stop if victory or say equals">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -75,11 +75,20 @@
       <option name="project" value="LOCAL" />
       <updated>1730110290408</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="allmost finished, stop if victory or say equals">
+      <option name="closed" value="true" />
+      <created>1730118126212</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730118126212</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start" />
-    <option name="LAST_COMMIT_MESSAGE" value="start" />
+    <MESSAGE value="allmost finished, stop if victory or say equals" />
+    <option name="LAST_COMMIT_MESSAGE" value="allmost finished, stop if victory or say equals" />
   </component>
 </project>

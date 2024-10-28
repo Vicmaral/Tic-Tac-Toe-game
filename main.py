@@ -1,10 +1,10 @@
 import numpy as np
+from sys import exit
 
 data_game = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
 
 
 def print_board():
-    print("\n\n")
     print(data_game[0][0], ' | ', data_game[0][1], ' | ', data_game[0][2])
     print("--------------")
     print(data_game[1][0], ' | ', data_game[1][1], ' | ', data_game[1][2])
@@ -18,12 +18,22 @@ def instructions_board():
     print('A', ' | ', 'S', ' | ', 'D')
     print("--------------")
     print('Z', ' | ', 'X', ' | ', 'C')
+    print('Player 1: 0 | Player 2: X\n')
+
+
+def is_winner():
+    if (data_game[0][0] == data_game[0][1] == data_game[0][2] != ' ') or (
+            data_game[1][0] == data_game[1][1] == data_game[1][2] != ' ') or (
+            data_game[2][0] == data_game[2][1] == data_game[2][2] != ' ') or (
+            data_game[2][0] == data_game[1][0] == data_game[0][0] != ' ') or (
+            data_game[2][1] == data_game[1][1] == data_game[0][1] != ' ') or (
+            data_game[2][2] == data_game[1][2] == data_game[0][2] != ' ') or (
+            data_game[0][0] == data_game[1][1] == data_game[2][2] != ' ') or (
+            data_game[2][0] == data_game[1][1] == data_game[0][2] != ' '):
+        return True
 
 
 def board_values():
-    print(inputs)
-    print(outputs)
-    print(np.setdiff1d(inputs, outputs))
     for x in np.setdiff1d(inputs, outputs):
         if x == 'q' and (len(inputs) % 2 == 0):
             data_game[0][0] = ' X'
@@ -64,26 +74,35 @@ def board_values():
     outputs.append(np.setdiff1d(inputs, outputs))
 
 
-turns = 10
 inputs = []
 outputs = []
 print("Welcome to Tic Tac Toe game\n"
       "Use your board to play\n")
 instructions_board()
-while turns > 0:
+while len(inputs) < 9:
+    input_ok = True
 
-    print_board()
-
-    temp_input = input("Choose your move:").lower()
-    if (temp_input in inputs) or (temp_input not in ('q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c')):
-        temp_input = input("Choose your move:(not in used and correct)")
-    else:
-        inputs.append(temp_input)
-
+    while input_ok:
+        print_board()
+        temp_input = input("Choose your move:").lower()
+        if (temp_input not in inputs) and (temp_input in ('q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c')):
+            inputs.append(temp_input)
+            input_ok = False
+        else:
+            print("Input repeated or not valid")
     board_values()
-    print_board()
-    if turns == 1:
-        if input("play again? Y/N ") == 'Y':
-            turns = 9
+    if is_winner():
+        if len(inputs) % 2 == 0:
+            print("Player 2 (X) WINS!!")
+        else:
+            print("Player 1 (0) WINS!!")
+
+    if len(inputs) == 9 or is_winner():
+        print_board()
+        if input("play again? Y/N ").lower() == 'y':
             inputs.clear()
             outputs.clear()
+            data_game = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+        else:
+            print("Bye, bye!!")
+            exit(0)
