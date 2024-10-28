@@ -1,4 +1,5 @@
 import numpy as np
+import random
 from sys import exit
 
 data_game = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
@@ -73,36 +74,56 @@ def board_values():
             data_game[2][2] = ' 0'
     outputs.append(np.setdiff1d(inputs, outputs))
 
-
+keys=('q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c')
+ia_active = False
 inputs = []
 outputs = []
 print("Welcome to Tic Tac Toe game\n"
       "Use your board to play\n")
 instructions_board()
+if input("Versus machine? Y/N ").lower() == 'y':
+    ia_active = True
+
 while len(inputs) < 9:
     input_ok = True
+    if ia_active and (len(inputs) % 2 == 0):
+        inputs.append(random.choice(np.setdiff1d(keys, outputs)))
 
-    while input_ok:
-        print_board()
-        temp_input = input("Choose your move:").lower()
-        if (temp_input not in inputs) and (temp_input in ('q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c')):
-            inputs.append(temp_input)
-            input_ok = False
-        else:
-            print("Input repeated or not valid")
+    else:
+        while input_ok:
+            print_board()
+            temp_input = input("Choose your move:").lower()
+            if (temp_input not in inputs) and (temp_input in keys):
+                inputs.append(temp_input)
+                input_ok = False
+            else:
+                print("Input repeated or not valid")
     board_values()
     if is_winner():
+        print("The winner is:")
         if len(inputs) % 2 == 0:
-            print("Player 2 (X) WINS!!")
+            if ia_active:
+                print("Player (X) WINS!!")
+            else:
+                print("Player 2 (X) WINS!!")
         else:
-            print("Player 1 (0) WINS!!")
+            if ia_active:
+                print("IA (0) WINS!!")
+            else:
+                print("Player 1 (0) WINS!!")
 
     if len(inputs) == 9 or is_winner():
         print_board()
+        if not is_winner():
+            print("Equals")
+
         if input("play again? Y/N ").lower() == 'y':
             inputs.clear()
             outputs.clear()
+            ia_active = False
             data_game = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+            if input("Versus machine? Y/N ").lower() == 'y':
+                ia_active = True
         else:
             print("Bye, bye!!")
             exit(0)
